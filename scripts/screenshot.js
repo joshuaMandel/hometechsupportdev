@@ -47,13 +47,14 @@ async function run() {
           const delay = (ms) => new Promise((r) => setTimeout(r, ms));
           for (let y = 0; y < document.body.scrollHeight; y += step) {
             window.scrollTo(0, y);
-            await delay(120);
+            await delay(200);
           }
           window.scrollTo(0, 0);
         });
 
-        // Let scroll-reveal / blob animations settle.
-        await page.waitForTimeout(500);
+        // Wait long enough for all 700 ms Reveal transitions to finish,
+        // including those with the longest delay (e.g. i*120 ms stagger).
+        await page.waitForTimeout(1200);
         const fileName = `${name}-${viewport.name}-${theme}.png`;
         await page.screenshot({
           path: path.join(OUT_DIR, fileName),
