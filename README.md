@@ -45,8 +45,26 @@ components/       Reusable UI components (NavBar, Footer, Layout, etc.)
 styles/           Global CSS and Tailwind directives
 ```
 
+## Contact form email
+
+The contact form (`/contact`) POSTs to a Next.js API route
+(`pages/api/contact.js`) that emails each lead to **jmandelmvp@gmail.com**
+with a **high-priority flag** and an attention-grabbing subject line
+(`🚨 NEW LEAD: …`).
+
+To enable sending, copy `.env.example` to `.env.local` and fill in your SMTP
+credentials:
+
+```bash
+cp .env.example .env.local
+```
+
+For Gmail, turn on 2-Step Verification and create an
+[App Password](https://myaccount.google.com/apppasswords), then use it as
+`SMTP_PASS`. Restart the dev server after editing env vars. Until these are
+set, the form returns a friendly "email not configured yet" message.
+
 ## Customizing
 
-Business details (phone, email, hours, service area) are placeholders in
-`components/Footer.js`, `pages/contact.js`, and the home page. Update those,
-and wire the contact form up to your email or CRM of choice, before going live.
+Other business details (hours, service area, testimonials) live in
+`components/Footer.js`, `pages/contact.js`, `pages/about.js`, and the home page.

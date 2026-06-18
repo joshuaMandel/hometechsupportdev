@@ -4,10 +4,37 @@ import PageHeader from "../components/PageHeader";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+
+    const form = e.target;
+    const payload = {
+      name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      service: form.service.value,
+      message: form.message.value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -56,8 +83,8 @@ export default function Contact() {
             <div role="status" className="bg-green-50 border border-green-200 text-green-800 rounded-lg p-6">
               <p className="font-semibold mb-1">Thanks for reaching out!</p>
               <p className="text-sm">
-                This is a demo form, so nothing was actually sent. On the live
-                site we&apos;d be in touch within one business day to schedule your visit.
+                Your message is on its way and we&apos;ll be in touch soon to
+                schedule your visit. For anything urgent, call us at (970) 331-1691.
               </p>
             </div>
           ) : (
@@ -102,11 +129,16 @@ export default function Contact() {
                   className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
               </div>
 
-              <button type="submit"
-                className="bg-brand text-white px-6 py-3 rounded-md font-semibold hover:bg-brand-dark transition-colors">
-                Send Message
+              {error && (
+                <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2">
+                  {error}
+                </p>
+              )}
+              <button type="submit" disabled={sending}
+                className="bg-brand text-white px-6 py-3 rounded-md font-semibold hover:bg-brand-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                {sending ? "Sending…" : "Send Message"}
               </button>
-              <p className="text-xs text-gray-500">We&apos;ll never share your information. This demo form does not actually submit.</p>
+              <p className="text-xs text-gray-500">We&apos;ll never share your information.</p>
             </form>
           )}
         </div>
