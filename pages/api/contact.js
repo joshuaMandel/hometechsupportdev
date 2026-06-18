@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const TO_ADDRESS = process.env.CONTACT_TO || "jmandelmvp@gmail.com";
 
@@ -14,27 +14,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Name, email, and message are required." });
   }
 
-  const {
-    SMTP_HOST,
-    SMTP_PORT,
-    SMTP_USER,
-    SMTP_PASS,
-    SMTP_FROM,
-  } = process.env;
+  const { RESEND_API_KEY, RESEND_FROM } = process.env;
 
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+  if (!RESEND_API_KEY) {
     return res.status(500).json({
-      error:
-        "Email is not configured yet. Set SMTP_HOST, SMTP_USER, and SMTP_PASS environment variables.",
+      error: "Email is not configured yet. Set the RESEND_API_KEY environment variable.",
     });
   }
 
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT) || 587,
-    secure: Number(SMTP_PORT) === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-  });
+  const resend = new Resend(RESEND_API_KEY);
 
   const subject = `🚨 NEW LEAD: ${name} needs help with ${service || "tech support"}`;
 
@@ -66,20 +54,24 @@ export default async function handler(req, res) {
   `;
 
   try {
-    await transporter.sendMail({
-      from: SMTP_FROM || `"TechCare Website" <${SMTP_USER}>`,
+    const { error } = await resend.emails.send({
+      from: RESEND_FROM || "TechCare Website <onboarding@resend.dev>",
       to: TO_ADDRESS,
       replyTo: email,
       subject,
       text,
       html,
-      priority: "high",
       headers: {
         "X-Priority": "1 (Highest)",
         "X-MSMail-Priority": "High",
         Importance: "high",
       },
     });
+
+    if (error) {
+      console.error("Resend error:", error);
+      return res.status(500).json({ error: "Sorry, something went wrong sending your message. Please try again or call us." });
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {

@@ -52,17 +52,24 @@ The contact form (`/contact`) POSTs to a Next.js API route
 with a **high-priority flag** and an attention-grabbing subject line
 (`🚨 NEW LEAD: …`).
 
-To enable sending, copy `.env.example` to `.env.local` and fill in your SMTP
-credentials:
+Email is sent via [Resend](https://resend.com). To enable sending:
 
 ```bash
 cp .env.example .env.local
 ```
 
-For Gmail, turn on 2-Step Verification and create an
-[App Password](https://myaccount.google.com/apppasswords), then use it as
-`SMTP_PASS`. Restart the dev server after editing env vars. Until these are
-set, the form returns a friendly "email not configured yet" message.
+1. Sign up at [resend.com](https://resend.com) and create an API key.
+2. Put it in `.env.local` as `RESEND_API_KEY`.
+3. Restart the dev server after editing env vars.
+
+Until you verify your own sending domain in the Resend dashboard, emails must
+be sent from their shared sandbox address (`onboarding@resend.dev`, already
+set as the default `RESEND_FROM`)&mdash;replies still go to the lead's real
+email via Reply-To. Until `RESEND_API_KEY` is set, the form returns a
+friendly "email not configured yet" message instead of failing silently.
+
+When deploying (e.g. to Vercel), set `RESEND_API_KEY` (and optionally
+`CONTACT_TO` / `RESEND_FROM`) in that host's environment variables.
 
 ## Customizing
 
