@@ -38,6 +38,20 @@ async function run() {
         const url = `${BASE_URL}${route}`;
         console.log(`Capturing ${url} [${viewport.name}/${theme}]`);
         await page.goto(url, { waitUntil: "networkidle" });
+
+        // Scroll to the bottom in steps so scroll-reveal sections (which
+        // animate in via IntersectionObserver) get triggered before we
+        // capture the full-page screenshot, then back to the top.
+        await page.evaluate(async () => {
+          const step = window.innerHeight;
+          const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+          for (let y = 0; y < document.body.scrollHeight; y += step) {
+            window.scrollTo(0, y);
+            await delay(120);
+          }
+          window.scrollTo(0, 0);
+        });
+
         // Let scroll-reveal / blob animations settle.
         await page.waitForTimeout(500);
         const fileName = `${name}-${viewport.name}-${theme}.png`;
