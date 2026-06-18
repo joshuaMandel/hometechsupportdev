@@ -9,7 +9,7 @@ export default function Layout({ title, description, children }) {
     <>
       <Head>
         <title>{pageTitle}</title>
-        <meta name="description" content={description || "In-home technology support for households and seniors."} />
+        <meta name="description" content={description || "Friendly in-home technology support for households and seniors in the St. Louis metro."} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <NavBar />

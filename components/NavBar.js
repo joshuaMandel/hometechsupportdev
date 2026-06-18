@@ -4,14 +4,9 @@ import { useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/market-opportunity", label: "Market Opportunity" },
-  { href: "/legal-requirements", label: "Legal & Setup" },
-  { href: "/insurance", label: "Insurance" },
-  { href: "/services-pricing", label: "Services & Pricing" },
-  { href: "/operations-staffing", label: "Operations & Staffing" },
-  { href: "/marketing", label: "Marketing" },
-  { href: "/risk-mitigation", label: "Risk & Security" },
-  { href: "/conclusion", label: "Conclusion" },
+  { href: "/services", label: "Services" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -25,12 +20,13 @@ export default function NavBar() {
         className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between"
         aria-label="Main navigation"
       >
-        <Link href="/" className="text-lg font-bold text-brand-dark whitespace-nowrap">
+        <Link href="/" className="flex items-center gap-2 text-lg font-bold text-brand-dark whitespace-nowrap">
+          <span aria-hidden="true" className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-brand text-white">TC</span>
           TechCare Home Services
         </Link>
 
         <button
-          className="lg:hidden p-2 rounded-md border border-gray-300"
+          className="sm:hidden p-2 rounded-md border border-gray-300"
           aria-label="Toggle navigation menu"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
@@ -40,7 +36,7 @@ export default function NavBar() {
           <span className="block w-5 h-0.5 bg-gray-700" />
         </button>
 
-        <ul className="hidden lg:flex flex-wrap gap-1 text-sm font-medium">
+        <ul className="hidden sm:flex flex-wrap items-center gap-1 text-sm font-medium">
           {links.map((link) => {
             const active = router.pathname === link.href;
             return (
@@ -59,11 +55,19 @@ export default function NavBar() {
               </li>
             );
           })}
+          <li>
+            <Link
+              href="/contact"
+              className="ml-2 px-4 py-2 rounded-md bg-brand text-white hover:bg-brand-dark transition-colors"
+            >
+              Book a Visit
+            </Link>
+          </li>
         </ul>
       </nav>
 
       {open && (
-        <ul className="lg:hidden flex flex-col gap-1 px-4 pb-4 text-sm font-medium">
+        <ul className="sm:hidden flex flex-col gap-1 px-4 pb-4 text-sm font-medium">
           {links.map((link) => {
             const active = router.pathname === link.href;
             return (
