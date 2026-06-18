@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
+import { images } from "../lib/images";
 
 const reasons = [
   { icon: "🤝", title: "Patient & Friendly", body: "We never make you feel silly for asking. We explain things in plain language and at your pace." },
@@ -27,21 +29,32 @@ export default function About() {
         subtitle="Friendly, local, in-home technology help you can actually trust."
       />
 
-      <Reveal className="prose-section max-w-3xl">
-        <p>
-          Technology should make life easier&mdash;but between Wi-Fi that won&apos;t
-          reach the back bedroom, TVs that need three remotes, and phones that
-          keep asking for passwords, it often does the opposite. We started
-          Gateway Tech Home Services to be the friendly neighbor who comes over,
-          sorts it out, and shows you how it works.
-        </p>
-        <p>
-          We specialize in helping people who don&apos;t want to feel rushed or
-          talked down to&mdash;older adults, busy families, remote workers, and
-          new homeowners. Whether it&apos;s a one-time setup or ongoing peace of
-          mind through our Gateway Care membership, we&apos;re here to help.
-        </p>
-      </Reveal>
+      <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <Reveal className="prose-section">
+          <p>
+            Technology should make life easier&mdash;but between Wi-Fi that won&apos;t
+            reach the back bedroom, TVs that need three remotes, and phones that
+            keep asking for passwords, it often does the opposite. We started
+            Gateway Tech Home Services to be the friendly neighbor who comes over,
+            sorts it out, and shows you how it works.
+          </p>
+          <p>
+            We specialize in helping people who don&apos;t want to feel rushed or
+            talked down to&mdash;older adults, busy families, remote workers, and
+            new homeowners. Whether it&apos;s a one-time setup or ongoing peace of
+            mind through our Gateway Care membership, we&apos;re here to help.
+          </p>
+        </Reveal>
+        <Reveal delay={120} className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl ring-1 ring-border">
+          <Image
+            src={images.about.src}
+            alt={images.about.alt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </Reveal>
+      </div>
 
       <section className="py-12">
         <Reveal><h2 className="text-2xl sm:text-3xl mb-8">Why Choose Us</h2></Reveal>

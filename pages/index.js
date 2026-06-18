@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import Layout from "../components/Layout";
 import Reveal from "../components/Reveal";
+import { images } from "../lib/images";
 
 const services = [
   { icon: "📶", title: "Wi-Fi & Home Networks", body: "Router and mesh setup, dead-zone fixes, and secure networks that actually reach every room." },
@@ -34,7 +36,7 @@ export default function Home() {
       description="Gateway Tech Home Services provides friendly, in-home help with Wi-Fi, TVs, computers, phones, and smart-home devices across the St. Louis metro."
     >
       {/* Hero */}
-      <section className="relative text-center py-16 sm:py-24 overflow-hidden">
+      <section className="relative py-12 sm:py-20 overflow-hidden">
         {/* Animated gradient blobs */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -top-20 -left-10 h-72 w-72 rounded-full bg-brand/30 blur-3xl animate-blob" />
@@ -42,20 +44,43 @@ export default function Home() {
           <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-brand/20 blur-3xl animate-blob" style={{ animationDelay: "6s" }} />
         </div>
 
-        <div className="animate-fade-up">
-          <p className="pill mb-5">⚡ Serving the St. Louis metro &amp; surrounding counties</p>
-          <h1 className="text-4xl sm:text-6xl mb-6 leading-[1.1]">
-            Technology trouble?
-            <span className="block gradient-text">We&apos;ll come to your home and fix it.</span>
-          </h1>
-          <p className="text-lg text-muted max-w-2xl mx-auto mb-9 leading-relaxed">
-            Wi-Fi, TVs, computers, phones, and smart-home devices&mdash;set up and
-            working, explained in plain language. Friendly, certified,
-            background-checked technicians with honest, upfront pricing.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/contact" className="btn-primary">Book a Visit</Link>
-            <a href="tel:+19703311691" className="btn-secondary">📞 Call (970) 331-1691</a>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          <div className="animate-fade-up text-center lg:text-left">
+            <p className="pill mb-5">⚡ Serving the St. Louis metro &amp; surrounding counties</p>
+            <h1 className="text-4xl sm:text-6xl mb-6 leading-[1.1]">
+              Technology trouble?
+              <span className="block gradient-text">We&apos;ll come to your home and fix it.</span>
+            </h1>
+            <p className="text-lg text-muted max-w-2xl mx-auto lg:mx-0 mb-9 leading-relaxed">
+              Wi-Fi, TVs, computers, phones, and smart-home devices&mdash;set up and
+              working, explained in plain language. Friendly, certified,
+              background-checked technicians with honest, upfront pricing.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+              <Link href="/contact" className="btn-primary">Book a Visit</Link>
+              <a href="tel:+19703311691" className="btn-secondary">📞 Call (970) 331-1691</a>
+            </div>
+          </div>
+
+          <div className="animate-fade-up relative" style={{ animationDelay: "120ms" }}>
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-border">
+              <Image
+                src={images.hero.src}
+                alt={images.hero.alt}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            {/* Floating rating badge */}
+            <div className="absolute -bottom-5 -left-3 sm:-left-5 card !py-3 !px-4 shadow-xl flex items-center gap-3">
+              <Stars />
+              <div className="text-left leading-tight">
+                <p className="font-display font-bold text-ink text-sm">5-star rated</p>
+                <p className="text-xs text-muted">by local neighbors</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -134,15 +159,25 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <Reveal as="section" className="card text-center py-14 px-6 relative overflow-hidden">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 opacity-60">
-          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 h-56 w-[28rem] rounded-full bg-brand/20 blur-3xl" />
+      <Reveal as="section" className="card !p-0 overflow-hidden">
+        <div className="grid lg:grid-cols-2 items-center">
+          <div className="p-8 sm:p-12 text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl mb-3">Ready to get your tech working?</h2>
+            <p className="text-muted mb-8 text-lg leading-relaxed">
+              Book an in-home visit today and let a friendly expert take care of it for you.
+            </p>
+            <Link href="/contact" className="btn-primary">Book a Visit</Link>
+          </div>
+          <div className="relative min-h-[240px] lg:min-h-full lg:self-stretch">
+            <Image
+              src={images.cta.src}
+              alt={images.cta.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </div>
-        <h2 className="text-3xl sm:text-4xl mb-3">Ready to get your tech working?</h2>
-        <p className="text-muted max-w-2xl mx-auto mb-8 text-lg">
-          Book an in-home visit today and let a friendly expert take care of it for you.
-        </p>
-        <Link href="/contact" className="btn-primary">Book a Visit</Link>
       </Reveal>
     </Layout>
   );

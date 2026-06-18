@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
+import { images } from "../lib/images";
 
 const services = [
   {
@@ -52,6 +54,17 @@ export default function Services() {
         title="Our Services"
         subtitle="In-home help with all your everyday technology. If it has a screen, a plug, or a Wi-Fi connection, we can probably help."
       />
+
+      <Reveal className="relative aspect-[21/9] rounded-3xl overflow-hidden mb-10 shadow-lg ring-1 ring-border">
+        <Image
+          src={images.services.src}
+          alt={images.services.alt}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+      </Reveal>
 
       <div className="grid sm:grid-cols-2 gap-6">
         {services.map((s, i) => (
