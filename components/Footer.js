@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -6,12 +7,14 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid gap-8 sm:grid-cols-3">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <span
-              aria-hidden="true"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-white text-sm font-bold"
-              style={{ backgroundImage: "linear-gradient(120deg, rgb(var(--brand)), rgb(var(--accent)))" }}
-            >
-              GT
+            <span className="inline-flex items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-black/5">
+              <Image
+                src="/images/logo-icon.png"
+                alt="Gateway Tech logo"
+                width={45}
+                height={40}
+                className="h-7 w-auto"
+              />
             </span>
             <span className="font-display font-extrabold text-lg text-ink">Gateway Tech Home Services</span>
           </div>

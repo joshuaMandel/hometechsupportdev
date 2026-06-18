@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
@@ -39,12 +40,15 @@ export default function NavBar() {
           href="/"
           className="flex items-center gap-2 font-display text-lg font-extrabold text-ink whitespace-nowrap group"
         >
-          <span
-            aria-hidden="true"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-white text-sm font-bold shadow-md transition-transform group-hover:scale-105"
-            style={{ backgroundImage: "linear-gradient(120deg, rgb(var(--brand)), rgb(var(--accent)))" }}
-          >
-            GT
+          <span className="inline-flex items-center justify-center rounded-xl bg-white p-1.5 shadow-md ring-1 ring-black/5 transition-transform group-hover:scale-105">
+            <Image
+              src="/images/logo-icon.png"
+              alt="Gateway Tech logo"
+              width={45}
+              height={40}
+              priority
+              className="h-7 w-auto"
+            />
           </span>
           Gateway Tech
         </Link>
