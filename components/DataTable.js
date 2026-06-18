@@ -1,12 +1,12 @@
 export default function DataTable({ caption, headers, rows }) {
   return (
-    <div className="overflow-x-auto mb-8 rounded-lg border border-gray-200 shadow-sm">
+    <div className="overflow-x-auto mb-8 rounded-2xl border border-border shadow-soft">
       <table className="w-full text-left text-sm">
         {caption && <caption className="sr-only">{caption}</caption>}
-        <thead className="bg-brand text-white">
-          <tr>
+        <thead>
+          <tr className="bg-gradient-to-r from-brand to-accent text-white">
             {headers.map((h) => (
-              <th key={h} scope="col" className="px-4 py-3 font-semibold">
+              <th key={h} scope="col" className="px-4 py-3.5 font-semibold">
                 {h}
               </th>
             ))}
@@ -14,9 +14,19 @@ export default function DataTable({ caption, headers, rows }) {
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-blue-50"}>
+            <tr
+              key={i}
+              className={`transition-colors hover:bg-brand-light/50 ${
+                i % 2 === 0 ? "bg-surface" : "bg-surface-2"
+              }`}
+            >
               {row.map((cell, j) => (
-                <td key={j} className="px-4 py-3 align-top border-t border-gray-100">
+                <td
+                  key={j}
+                  className={`px-4 py-3 align-top border-t border-border ${
+                    j === 0 ? "font-medium text-ink" : "text-muted"
+                  }`}
+                >
                   {cell}
                 </td>
               ))}

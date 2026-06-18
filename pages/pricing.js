@@ -2,6 +2,7 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
 import DataTable from "../components/DataTable";
+import Reveal from "../components/Reveal";
 
 const plans = [
   {
@@ -41,43 +42,44 @@ export default function Pricing() {
         subtitle="No surprises and no pushy upsells. You'll always get a clear quote before we start any work."
       />
 
-      <div className="grid sm:grid-cols-3 gap-6">
-        {plans.map((p) => (
-          <div
+      <div className="grid sm:grid-cols-3 gap-6 items-stretch">
+        {plans.map((p, i) => (
+          <Reveal
             key={p.name}
-            className={`rounded-lg p-6 border flex flex-col ${
-              p.highlight ? "border-brand shadow-md bg-white ring-2 ring-brand" : "border-gray-100 shadow-sm bg-white"
+            delay={i * 100}
+            className={`relative rounded-2xl p-6 flex flex-col transition-all duration-300 ${
+              p.highlight
+                ? "bg-surface border-2 border-brand shadow-glow sm:-translate-y-2"
+                : "card card-hover"
             }`}
           >
             {p.highlight && (
-              <p className="text-xs font-bold uppercase tracking-wide text-brand mb-2">Most Popular</p>
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold text-white shadow-md"
+                style={{ backgroundImage: "linear-gradient(120deg, rgb(var(--brand)), rgb(var(--accent)))" }}>
+                MOST POPULAR
+              </span>
             )}
-            <h2 className="text-xl text-brand-dark mb-1">{p.name}</h2>
-            <p className="text-3xl font-bold text-gray-900">{p.price}</p>
-            <p className="text-sm text-gray-500 mb-4">{p.unit}</p>
-            <ul className="space-y-2 mb-6 flex-1">
+            <h2 className="text-xl text-ink mb-1">{p.name}</h2>
+            <p className="text-3xl font-display font-extrabold gradient-text">{p.price}</p>
+            <p className="text-sm text-muted mb-5">{p.unit}</p>
+            <ul className="space-y-2.5 mb-7 flex-1">
               {p.features.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span aria-hidden="true" className="text-brand font-bold">✓</span>
+                <li key={f} className="flex items-start gap-2 text-sm text-ink/80">
+                  <span aria-hidden="true" className="text-accent font-bold">✓</span>
                   {f}
                 </li>
               ))}
             </ul>
-            <Link
-              href="/contact"
-              className={`text-center px-4 py-2 rounded-md font-semibold transition-colors ${
-                p.highlight ? "bg-brand text-white hover:bg-brand-dark" : "bg-brand-light text-brand-dark hover:bg-blue-200"
-              }`}
-            >
+            <Link href="/contact" className={p.highlight ? "btn-primary w-full" : "btn-secondary w-full"}>
               {p.cta}
             </Link>
-          </div>
+          </Reveal>
         ))}
       </div>
 
-      <div className="mt-12">
-        <h2 className="text-2xl mb-4">Sample Service Rates</h2>
-        <p className="text-gray-600 mb-6 max-w-3xl">
+      <Reveal className="mt-16">
+        <h2 className="text-2xl sm:text-3xl mb-4">Sample Service Rates</h2>
+        <p className="text-muted mb-6 max-w-3xl leading-relaxed">
           Most jobs are flat-rate so you know the cost before we begin. Hourly
           troubleshooting is available at $60&ndash;$90/hour. Here are some common examples:
         </p>
@@ -94,19 +96,19 @@ export default function Pricing() {
             ["Move-in bundle (network + TV + streaming)", "$200–$300"],
           ]}
         />
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted">
           Final pricing depends on your specific setup&mdash;we&apos;ll confirm a flat
           quote before any work begins. Discounts available for seniors and first-time clients.
         </p>
-      </div>
+      </Reveal>
 
-      <div className="bg-brand-dark text-white rounded-lg p-8 mt-12 text-center">
-        <h2 className="text-2xl text-white mb-3">Not sure what you need?</h2>
-        <p className="text-blue-100 mb-6">Tell us what&apos;s going on and we&apos;ll give you a free, no-obligation quote.</p>
-        <Link href="/contact" className="inline-block bg-white text-brand px-6 py-3 rounded-md font-semibold hover:bg-brand-light transition-colors">
-          Request a Quote
-        </Link>
-      </div>
+      <Reveal as="section" className="relative overflow-hidden rounded-3xl text-center text-white p-10 mt-16"
+        style={{ backgroundImage: "linear-gradient(130deg, rgb(var(--brand)), rgb(var(--accent)))" }}>
+        <div aria-hidden="true" className="absolute -left-10 -bottom-10 h-44 w-44 rounded-full bg-white/10 blur-2xl animate-float" />
+        <h2 className="text-2xl sm:text-3xl text-white mb-3 relative">Not sure what you need?</h2>
+        <p className="text-white/90 mb-7 relative">Tell us what&apos;s going on and we&apos;ll give you a free, no-obligation quote.</p>
+        <Link href="/contact" className="btn-light relative">Request a Quote</Link>
+      </Reveal>
     </Layout>
   );
 }

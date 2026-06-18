@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
+import Reveal from "../components/Reveal";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -47,71 +48,70 @@ export default function Contact() {
         subtitle="Tell us what you need help with and we'll follow up to schedule a visit or answer your questions—usually within one business day."
       />
 
-      <div className="grid lg:grid-cols-3 gap-10">
+      <div className="grid lg:grid-cols-3 gap-8">
         {/* Contact details */}
-        <aside className="lg:col-span-1 space-y-6">
-          <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
-            <h2 className="text-lg text-brand-dark mb-3">Reach Us Directly</h2>
-            <ul className="space-y-3 text-sm">
+        <Reveal as="aside" className="lg:col-span-1 space-y-6">
+          <div className="card">
+            <h2 className="text-lg text-ink mb-4">Reach Us Directly</h2>
+            <ul className="space-y-4 text-sm">
               <li>
-                <span className="block text-gray-500">Phone</span>
+                <span className="block text-muted mb-0.5">📞 Phone</span>
                 <a href="tel:+19703311691" className="text-brand font-semibold hover:underline">(970) 331-1691</a>
               </li>
               <li>
-                <span className="block text-gray-500">Email</span>
-                <a href="mailto:jmandelmvp@gmail.com" className="text-brand font-semibold hover:underline">jmandelmvp@gmail.com</a>
+                <span className="block text-muted mb-0.5">✉️ Email</span>
+                <a href="mailto:jmandelmvp@gmail.com" className="text-brand font-semibold hover:underline break-all">jmandelmvp@gmail.com</a>
               </li>
               <li>
-                <span className="block text-gray-500">Hours</span>
-                <span className="text-gray-800">Open 24 hours, 7 days a week</span>
+                <span className="block text-muted mb-0.5">🕒 Hours</span>
+                <span className="text-ink">Open 24 hours, 7 days a week</span>
               </li>
               <li>
-                <span className="block text-gray-500">Service Area</span>
-                <span className="text-gray-800">St. Louis metro &amp; surrounding counties</span>
+                <span className="block text-muted mb-0.5">📍 Service Area</span>
+                <span className="text-ink">St. Louis metro &amp; surrounding counties</span>
               </li>
             </ul>
           </div>
-          <div className="bg-brand-light rounded-lg p-6">
-            <p className="text-brand-dark font-semibold mb-1">Prefer to talk?</p>
-            <p className="text-sm text-gray-700">Give us a call and a real person will help you figure out exactly what you need.</p>
+          <div className="rounded-2xl p-6 text-white relative overflow-hidden"
+            style={{ backgroundImage: "linear-gradient(130deg, rgb(var(--brand)), rgb(var(--accent)))" }}>
+            <p className="font-display font-bold mb-1 text-white">Prefer to talk?</p>
+            <p className="text-sm text-white/90">Give us a call and a real person will help you figure out exactly what you need.</p>
           </div>
-        </aside>
+        </Reveal>
 
         {/* Form */}
-        <div className="lg:col-span-2">
+        <Reveal delay={120} className="lg:col-span-2">
           {submitted ? (
-            <div role="status" className="bg-green-50 border border-green-200 text-green-800 rounded-lg p-6">
-              <p className="font-semibold mb-1">Thanks for reaching out!</p>
-              <p className="text-sm">
+            <div role="status" className="card border-accent/40">
+              <div className="text-4xl mb-2" aria-hidden="true">🎉</div>
+              <p className="font-display font-bold text-xl mb-1 text-ink">Thanks for reaching out!</p>
+              <p className="text-muted">
                 Your message is on its way and we&apos;ll be in touch soon to
-                schedule your visit. For anything urgent, call us at (970) 331-1691.
+                schedule your visit. For anything urgent, call us at{" "}
+                <a href="tel:+19703311691" className="text-brand font-semibold">(970) 331-1691</a>.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm p-6 sm:p-8 border border-gray-100 space-y-5">
+            <form onSubmit={handleSubmit} className="card space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-                  <input id="name" name="name" type="text" required
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+                  <label htmlFor="name" className="block text-sm font-medium mb-1.5 text-ink">Name</label>
+                  <input id="name" name="name" type="text" required className="input" />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone</label>
-                  <input id="phone" name="phone" type="tel"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+                  <label htmlFor="phone" className="block text-sm font-medium mb-1.5 text-ink">Phone</label>
+                  <input id="phone" name="phone" type="tel" className="input" />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                <input id="email" name="email" type="email" required
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+                <label htmlFor="email" className="block text-sm font-medium mb-1.5 text-ink">Email</label>
+                <input id="email" name="email" type="email" required className="input" />
               </div>
 
               <div>
-                <label htmlFor="service" className="block text-sm font-medium mb-1">What do you need help with?</label>
-                <select id="service" name="service"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-brand">
+                <label htmlFor="service" className="block text-sm font-medium mb-1.5 text-ink">What do you need help with?</label>
+                <select id="service" name="service" className="input">
                   <option>Wi-Fi &amp; home network</option>
                   <option>TV &amp; home theater</option>
                   <option>Computer or phone</option>
@@ -123,25 +123,24 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">Tell us more</label>
+                <label htmlFor="message" className="block text-sm font-medium mb-1.5 text-ink">Tell us more</label>
                 <textarea id="message" name="message" rows={4} required
                   placeholder="Describe what's going on and we'll let you know how we can help."
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+                  className="input" />
               </div>
 
               {error && (
-                <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2">
+                <p role="alert" className="text-sm text-red-600 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-2.5">
                   {error}
                 </p>
               )}
-              <button type="submit" disabled={sending}
-                className="bg-brand text-white px-6 py-3 rounded-md font-semibold hover:bg-brand-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+              <button type="submit" disabled={sending} className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed">
                 {sending ? "Sending…" : "Send Message"}
               </button>
-              <p className="text-xs text-gray-500">We&apos;ll never share your information.</p>
+              <p className="text-xs text-muted">We&apos;ll never share your information.</p>
             </form>
           )}
-        </div>
+        </Reveal>
       </div>
     </Layout>
   );
