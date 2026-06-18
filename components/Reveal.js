@@ -4,6 +4,7 @@ export default function Reveal({
   as: Tag = "div",
   delay = 0,
   className = "",
+  style,
   children,
 }) {
   const ref = useRef(null);
@@ -39,7 +40,7 @@ export default function Reveal({
   return (
     <Tag
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: `${delay}ms`, ...style }}
       className={`transition-all duration-700 ease-out ${
         shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       } ${className}`}
