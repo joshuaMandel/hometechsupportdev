@@ -41,7 +41,7 @@ export default function Contact() {
   return (
     <Layout
       title="Contact"
-      description="Book an in-home tech visit or request a free quote from TechCare Home Services."
+      description="Book an in-home tech visit or request a free quote from Gateway Tech Home Services."
     >
       <PageHeader
         title="Get in Touch"

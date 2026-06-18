@@ -27,7 +27,7 @@ export default async function handler(req, res) {
   const subject = `🚨 NEW LEAD: ${name} needs help with ${service || "tech support"}`;
 
   const text = [
-    "You have a new lead from the TechCare website!",
+    "You have a new lead from the Gateway Tech website!",
     "",
     `Name:    ${name}`,
     `Phone:   ${phone || "(not provided)"}`,
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #1f2937;">
-      <h2 style="color: #2563eb; margin-bottom: 4px;">🚨 New TechCare Lead</h2>
+      <h2 style="color: #2563eb; margin-bottom: 4px;">🚨 New Gateway Tech Lead</h2>
       <p style="margin-top:0; color:#6b7280;">Someone just reached out through your website.</p>
       <table style="border-collapse: collapse; margin: 12px 0;">
         <tr><td style="padding:4px 12px 4px 0; font-weight:bold;">Name</td><td>${name}</td></tr>
@@ -55,7 +55,7 @@ export default async function handler(req, res) {
 
   try {
     const { error } = await resend.emails.send({
-      from: RESEND_FROM || "TechCare Website <onboarding@resend.dev>",
+      from: RESEND_FROM || "Gateway Tech Website <onboarding@resend.dev>",
       to: TO_ADDRESS,
       replyTo: email,
       subject,

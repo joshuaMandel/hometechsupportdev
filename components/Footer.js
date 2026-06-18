@@ -11,9 +11,9 @@ export default function Footer() {
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-white text-sm font-bold"
               style={{ backgroundImage: "linear-gradient(120deg, rgb(var(--brand)), rgb(var(--accent)))" }}
             >
-              TC
+              GT
             </span>
-            <span className="font-display font-extrabold text-lg text-ink">TechCare Home Services</span>
+            <span className="font-display font-extrabold text-lg text-ink">Gateway Tech Home Services</span>
           </div>
           <p className="text-sm text-muted max-w-xs">
             Friendly, patient, in-home technology help for the St.&nbsp;Louis
@@ -47,7 +47,7 @@ export default function Footer() {
 
       <div className="border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-muted">
-          <p>&copy; {new Date().getFullYear()} TechCare Home Services. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Gateway Tech Home Services. All rights reserved.</p>
           <nav aria-label="Legal navigation">
             <ul className="flex gap-6">
               <li><Link href="/privacy-policy" className="hover:text-brand transition-colors">Privacy Policy</Link></li>

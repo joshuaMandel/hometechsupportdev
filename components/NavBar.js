@@ -44,9 +44,9 @@ export default function NavBar() {
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-white text-sm font-bold shadow-md transition-transform group-hover:scale-105"
             style={{ backgroundImage: "linear-gradient(120deg, rgb(var(--brand)), rgb(var(--accent)))" }}
           >
-            TC
+            GT
           </span>
-          TechCare
+          Gateway Tech
         </Link>
 
         <div className="flex items-center gap-2">

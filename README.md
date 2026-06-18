@@ -1,4 +1,4 @@
-# TechCare Home Services Website
+# Gateway Tech Home Services Website
 
 A Next.js + Tailwind CSS marketing website for an in-home technology support
 business serving the St. Louis metro. It acts as a landing page, services and

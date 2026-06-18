@@ -14,11 +14,11 @@ const plans = [
     highlight: false,
   },
   {
-    name: "Tech-Care Membership",
+    name: "Gateway Care Membership",
     price: "$20",
     unit: "per month",
     features: ["2 remote support sessions / month", "In-home visits at just $40", "Priority scheduling", "Free annual security checkup"],
-    cta: "Join Tech-Care",
+    cta: "Join Gateway Care",
     highlight: true,
   },
   {

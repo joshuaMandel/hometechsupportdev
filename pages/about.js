@@ -20,10 +20,10 @@ export default function About() {
   return (
     <Layout
       title="About"
-      description="TechCare Home Services brings patient, certified, in-home tech support to households across the St. Louis metro."
+      description="Gateway Tech Home Services brings patient, certified, in-home tech support to households across the St. Louis metro."
     >
       <PageHeader
-        title="About TechCare Home Services"
+        title="About Gateway Tech Home Services"
         subtitle="Friendly, local, in-home technology help you can actually trust."
       />
 
@@ -32,14 +32,14 @@ export default function About() {
           Technology should make life easier&mdash;but between Wi-Fi that won&apos;t
           reach the back bedroom, TVs that need three remotes, and phones that
           keep asking for passwords, it often does the opposite. We started
-          TechCare Home Services to be the friendly neighbor who comes over,
+          Gateway Tech Home Services to be the friendly neighbor who comes over,
           sorts it out, and shows you how it works.
         </p>
         <p>
           We specialize in helping people who don&apos;t want to feel rushed or
           talked down to&mdash;older adults, busy families, remote workers, and
           new homeowners. Whether it&apos;s a one-time setup or ongoing peace of
-          mind through our Tech-Care membership, we&apos;re here to help.
+          mind through our Gateway Care membership, we&apos;re here to help.
         </p>
       </Reveal>
 

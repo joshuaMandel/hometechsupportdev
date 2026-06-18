@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 
 export default function Layout({ title, description, children }) {
-  const pageTitle = title ? `${title} | TechCare Home Services` : "TechCare Home Services";
+  const pageTitle = title ? `${title} | Gateway Tech Home Services` : "Gateway Tech Home Services";
 
   return (
     <>

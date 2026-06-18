@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <Layout
       title="In-Home Tech Support in St. Louis"
-      description="TechCare Home Services provides friendly, in-home help with Wi-Fi, TVs, computers, phones, and smart-home devices across the St. Louis metro."
+      description="Gateway Tech Home Services provides friendly, in-home help with Wi-Fi, TVs, computers, phones, and smart-home devices across the St. Louis metro."
     >
       {/* Hero */}
       <section className="relative text-center py-16 sm:py-24 overflow-hidden">
