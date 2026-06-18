@@ -71,6 +71,20 @@ friendly "email not configured yet" message instead of failing silently.
 When deploying (e.g. to Vercel), set `RESEND_API_KEY` (and optionally
 `CONTACT_TO` / `RESEND_FROM`) in that host's environment variables.
 
+## Screenshots
+
+`scripts/screenshot.js` uses Playwright to capture full-page screenshots of
+every page at desktop and mobile sizes, in both light and dark mode.
+
+```bash
+npx playwright install chromium   # one-time browser download
+npm run dev                       # in one terminal
+npm run shots                     # in another terminal
+```
+
+Screenshots are saved to `screenshots/` (gitignored). Set `BASE_URL` if your
+dev server runs somewhere other than `http://localhost:3000`.
+
 ## Customizing
 
 Other business details (hours, service area, testimonials) live in
