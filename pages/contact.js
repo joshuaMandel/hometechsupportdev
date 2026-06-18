@@ -28,11 +28,11 @@ export default function Contact() {
             <ul className="space-y-3 text-sm">
               <li>
                 <span className="block text-gray-500">Phone</span>
-                <a href="tel:+13145550123" className="text-brand font-semibold hover:underline">(314) 555-0123</a>
+                <a href="tel:+19703311691" className="text-brand font-semibold hover:underline">(970) 331-1691</a>
               </li>
               <li>
                 <span className="block text-gray-500">Email</span>
-                <a href="mailto:hello@techcarehome.example" className="text-brand font-semibold hover:underline">hello@techcarehome.example</a>
+                <a href="mailto:jmandelmvp@gmail.com" className="text-brand font-semibold hover:underline">jmandelmvp@gmail.com</a>
               </li>
               <li>
                 <span className="block text-gray-500">Hours</span>

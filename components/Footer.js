@@ -16,10 +16,10 @@ export default function Footer() {
           <p className="text-white font-semibold mb-2">Get in Touch</p>
           <ul className="text-sm space-y-1">
             <li>
-              Phone: <a href="tel:+13145550123" className="hover:text-white underline">(314) 555-0123</a>
+              Phone: <a href="tel:+19703311691" className="hover:text-white underline">(970) 331-1691</a>
             </li>
             <li>
-              Email: <a href="mailto:hello@techcarehome.example" className="hover:text-white underline">hello@techcarehome.example</a>
+              Email: <a href="mailto:jmandelmvp@gmail.com" className="hover:text-white underline">jmandelmvp@gmail.com</a>
             </li>
             <li>Hours: Mon&ndash;Sat, 8am&ndash;7pm</li>
           </ul>

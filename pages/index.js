@@ -83,10 +83,10 @@ export default function Home() {
             Book a Visit
           </Link>
           <a
-            href="tel:+13145550123"
+            href="tel:+19703311691"
             className="bg-white text-brand border border-brand px-6 py-3 rounded-md font-semibold hover:bg-brand-light transition-colors"
           >
-            Call (314) 555-0123
+            Call (970) 331-1691
           </a>
         </div>
       </section>
