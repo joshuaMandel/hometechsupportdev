@@ -91,7 +91,7 @@ export default function Home() {
           ["Same-week", "appointments"],
           ["Upfront", "flat-rate pricing"],
           ["Certified &", "background-checked"],
-          ["Patient,", "no-jargon help"],
+          ["Patient,", "no-jargon help "],
         ].map(([a, b]) => (
           <div key={a} className="px-2">
             <p className="font-display font-bold text-brand">{a}</p>
