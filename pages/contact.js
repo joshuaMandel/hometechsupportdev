@@ -36,7 +36,7 @@ export default function Contact() {
               </li>
               <li>
                 <span className="block text-gray-500">Hours</span>
-                <span className="text-gray-800">Mon&ndash;Sat, 8:00am&ndash;7:00pm</span>
+                <span className="text-gray-800">Open 24 hours, 7 days a week</span>
               </li>
               <li>
                 <span className="block text-gray-500">Service Area</span>

@@ -21,7 +21,7 @@ export default function Footer() {
             <li>
               Email: <a href="mailto:jmandelmvp@gmail.com" className="hover:text-white underline">jmandelmvp@gmail.com</a>
             </li>
-            <li>Hours: Mon&ndash;Sat, 8am&ndash;7pm</li>
+            <li>Hours: 24/7, every day</li>
           </ul>
         </div>
 
