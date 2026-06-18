@@ -54,7 +54,7 @@ export default function Home() {
             <p className="text-lg text-muted max-w-2xl mx-auto lg:mx-0 mb-9 leading-relaxed">
               Wi-Fi, TVs, computers, phones, and smart-home devices&mdash;set up and
               working, explained in plain language. Friendly, certified,
-              background-checked technicians with honest, upfront pricing.
+              background-checked technicians with honest, upfront pricing.&nbsp;
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
               <Link href="/contact" className="btn-primary">Book a Visit</Link>
