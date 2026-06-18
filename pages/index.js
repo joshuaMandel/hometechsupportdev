@@ -70,7 +70,7 @@ export default function Home() {
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover object-right"
               />
             </div>
             {/* Floating rating badge */}
